@@ -60,6 +60,8 @@ BY HYERYENG SHIN
    - I chose to analyze the accessibility of all the public transit including bus stops
    - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
    - The lower the index, the easier for the residents to access the service
+    
+   ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.3%20rail%20accessibility.png)
 4. School quality
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
