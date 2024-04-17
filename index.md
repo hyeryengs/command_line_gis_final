@@ -48,7 +48,7 @@ BY HYERYENG SHIN
 1. House price and affordability
    - Simply divide the median house price (median rental price) by the median household income of each county
    - The higher the index, the harder to afford housing price or rental prices (not good)
-   ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/2.1%20housing%20affordability%202.png)
+![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.1%20housing%20affordability%202.png)
 
 2. Amenities
    - For amenities, I chose to analyze the accessibility of hospitals in case of emergency
@@ -123,8 +123,8 @@ total_merged['crime_per_100k'] = crime_merged['RATE_PER_100K']
 total_merged['case_cleared'] = crime_merged['PERCENT_CLEARED']
 ```
 
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/combined%20output%201.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/combined%20output%202.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/combined%20output%201.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/combined%20output%202.png)
 
 ## Redirection
 Most factors represent better when the indices are lower but for 2 factors - park accessibility and case cleared, they are better when the indices are higher
@@ -158,16 +158,16 @@ attribute_weights = {
 ```
 
 ## Visualization
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/result.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/result.png)
 
 ## Validation
 1. Compare the suitability score with the median household income of each county
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/validation%201.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/validation%201%20-1.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%201.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%201%20-1.png)
 
 2. Compare the suitability score with the rank from the website's survey
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/validation%202.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/validation%202%20-1.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%202.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%202%20-1.png)
 
 ## Conclusion
 
