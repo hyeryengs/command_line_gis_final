@@ -12,7 +12,7 @@ BY HYERYENG SHIN
 
 **Mapping** I aim to apply suitability analysis techniques learned from my Topics in GIS class using command-line tools. For the static maps, I will generate choropleth maps and components for the suitability analysis, and eventually produce the final suitability analysis map. Furthermore, I intend to integrate this final map with an appropriate base map to create an interactive visualization
 
-## STRATEGIES TO GET CRUCIAL FACTORS FROM [LAURUSHOMES](https://www.laurushomes.co.uk)
+## STRATEGIES TO GET CRUCIAL FACTORS FROM [LAURUSHOMES](https://www.laurushomes.co.uk) AND THEIR DATA SOURCES
 
 1. **House price and affordability**: Calculate Housing price/median household income (or rental price/median household income) from U.S. Census Bureau API and check the county's housing price is appropriate in proportion to income level
 2. **Amenities**: [Hospital](https://njogis-newjersey.opendata.arcgis.com/datasets/296e4de9d55640ffb9bb766f9606363b_1/explore) accessibility. Compare the average distance between the centroids of the counties and the top 3 nearest hospitals
@@ -39,7 +39,108 @@ BY HYERYENG SHIN
 5. Weighting
    - give weights to each factor depending on the weights that I think are more important
 6. Visualization
-   - visualize the results in various ways like bar chart
+   - visualize the results in various ways like a bar chart
 7. Validation
    - validate the results with different sources such as median household income level, website surveys like [2024 Best Counties to Live in New Jersey](https://www.niche.com/places-to-live/search/best-counties/s/new-jersey/)
 
+## 10 CRUCIAL FACTORS OUTPUTS
+1. House price and affordability
+   - Simply divide the median house price (median rental price) by the median household income of each county
+   - The higher the index, the harder to afford housing price or rental prices (not good)
+2. Amenities
+   - For amenities, I chose to analyze the accessibility of hospitals in case of emergency
+   - Calculate the average distance between the centroid of each county and the distance of the top 3 nearest hospitals to the centroid
+   - Employed BallTree function for calculation
+   - The lower the index, the easier for the residents to access the service
+3. Rail accessibility
+   - I chose to analyze the accessibility of all the public transit including bus stops
+   - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
+   - The lower the index, the easier for the residents to access the service
+4. School quality
+   - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
+   - The lower the index, the better for students away from the opportunities to get exposed to cannabis
+5. Commute time
+   - Simply draw a choropleth map of commute time from the website's statistics
+   - Though the commute time might be different depending on where we work, the lower, the better
+6. Access to green areas
+   - Count the number of parks that are accessible to the public (excluding private parks) by county
+   - The higher, the more opportunities to experience different parks and closer accessibility to parks
+7. Local environment
+   - Count the number of contaminated sites by county
+   - The lower, the better
+8. Air quality
+   - Count the number of air quality permitted facilities by county
+   - The lower, the better
+9. Flood risks
+    - According to [US Dept of Commerce
+National Oceanic and Atmospheric Administration
+National Weather Service](https://www.weather.gov/ffc/floods#:~:text=Areas%20most%20susceptible%20to%20flash,%2C%20storm%20drains%2C%20and%20culverts.), the flood-prone areas include mountainous streams and rivers, urban areas, low-lying area, storm drains, and culverts. From my data, I'll select the data that are 'Stream/River', 'Sea/Ocean' and have 0 elevation
+    - Count the number of flood-prone sites that are either stream/river of sea/ocean and zero-elevation
+    - The lower, the better
+10. Crime rates and anti-social behavior
+    - Compare the crime rate per 100k and the percentage of cases cleared
+    - For the former factor, the lower, the better
+    - For the latter one, I think it's better if higher (the ideal would be low cases occurred)
+   
+## Data Integration
+
+## Redirection
+Most factors represent better when the indices are lower but for 2 factors - park accessibility and case cleared, they are better when the indices are higher
+To change the direction of the index meaning, reverse the direction of park accessibility and case cleared by deducting from the max value of each factor
+
+```
+# Reverse the direction of park_accessibility and case_cleared
+modified_total_merged['park_accessibility'] = modified_total_merged['park_accessibility'].max() + 1 - modified_total_merged['park_accessibility']
+modified_total_merged['case_cleared'] = modified_total_merged['case_cleared'].max() + 1 - modified_total_merged['case_cleared']
+```
+
+## Weighting
+Give different amout of weights to each factor depending on what I think is more important and combine all the scores at once regardless of units (because the lower the number, the better it means after all)
+
+```
+# Define attribute weights
+attribute_weights = {
+    'housing_affordability': 0.1,
+    'rental_affordability': 0.05,
+    'hospital_accessibility': 0.05,
+    'rail_accessibility': 0.05,
+    'school_quality': 0.1,
+    'commute_time': 0.1,
+    'park_accessibility': 0.1,
+    'contaminated_sites': 0.1,
+    'air_facilities': 0.1,
+    'flood_prone': 0.05,
+    'crime_per_100k': 0.1,
+    'case_cleared': 0.1
+}
+```
+
+## Visualization
+
+## Validation
+1. Compare the suitability score with the median household income of each county
+2. Compare the suitability score with the rank from the website's survey
+
+## Conclusion
+
+In the scatter plot of suitability score vs median household income, the left upper corner is represented as wealthy with a good suitability score. These include MORRIS, BERGEN, and SOMERSET counties. The left lower corner represents low income but with good suitability scores. These include HUDSON, CAMDEN, and ESSEX counties.
+
+In another scatter plot of suitability score vs rank, the left lower corner is represented as a higher rank in the real world reflecting actual residents' opinions. These include HUDSON, MORRIS, BERGEN, MERCER, MIDDLESEX, and SOMERSET counties.
+
+By combining these two results, the overlapping counties are MORRIS and SOMERSET counties.
+
+## Refleciton
+
+Through my suitability analysis final project, I've gained valuable insights into geographic analysis and neighborhood characteristics. While my approach was simplified compared to complex tools like ArcGIS, it provided a foundational understanding of suitability analysis and its implications.
+
+**Simplified Approach**: In contrast to ArcGIS's sophisticated tools, my project used straightforward calculations to determine suitability. While it may not capture all nuances, this simplified approach still yielded valuable insights and served as an accessible entry point into geographic analysis.
+
+**Consideration of Factors**: I have to admit that my project needs further  consideration of various factors in suitability analysis, from housing affordability to crime rates. Each factor contributes uniquely to neighborhood suitability, and striking a balance requires thoughtful consideration of their interplay.
+
+**Insight Generation**: Despite its simplicity, my project offered valuable insights into neighborhood environments. By examining factors, I was able to discern trends and draft insights about the friendliness of different neighborhoods.
+
+**Flexibility and Customization**: A notable strength of my project is its flexibility and customization. By allowing users to adjust attributes and weights according to their preferences, it empowers exploration and analysis tailored to specific needs and interests.
+
+**Alignment with Socioeconomic Factors**: Though not perfect, the outcomes of my project exhibited notable correspondence with median household income levels and online rankings of the best counties to reside in New Jersey. While the regression models did not demonstrate significant slope coefficients, the overall trends observed were remarkably consistent with expectations based on socioeconomic factors
+
+Overall, my final insights reflect a thoughtful reflection on the suitability analysis process and its implications for community well-being. While my project may be simplified, it has provided a solid foundation for further exploration and analysis in the realm of geographic analysis.
