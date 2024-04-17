@@ -88,7 +88,7 @@ BY HYERYENG SHIN
    - Count the number of air quality permitted facilities by county
    - The lower, the better
   ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/blob/main/images/2.8%20air%20quality.png)
-   - For the web map, click [here](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/air_quality.html)
+   - For the web map, click [here](images/air_quality.html)
      
 9. Flood risks
     - According to [US Dept of Commerce
