@@ -23,7 +23,7 @@ BY HYERYENG SHIN
 6. **Access to green areas**: [Park](https://njogis-newjersey.opendata.arcgis.com/datasets/ac19884cc71741ff91b808da50219ec2_62/explore) provisions. Count the number of parks in each county and compare them.
 7. **Local environment**: Density of [known contaminated sites](https://njogis-newjersey.opendata.arcgis.com/datasets/b167bb2ae09c43f8ab9e954700be45d9_0/explore). Count the number of known contaminated sites in each county and compare them.
 8. **Air quality**: Density of [Air quality permitted facility](https://njogis-newjersey.opendata.arcgis.com/maps/44f775eb03544c56a3545c0403db8b14/about). Count the number of air quality permitted facility sites in each county and compare them.
-9. **Flood risks**: [Precipitation amount](https://njdep.rutgers.edu/rainfall/#data). Calculate the precipitation amount by county for the 2023 period.
+9. **Flood risks**: Waterbody sites[https://njogis-newjersey.opendata.arcgis.com/documents/c4cdeebddbb947f6bab38e8a27dc1294/about] of New Jersey. Count the number of flood-prone sites that are either stream/river of sea/ocean and zero-elevation
 10. **Crime rates and anti-social behavior**: Make a new table for each county’s [Crime Data](https://www.nj.gov/njsp/ucr/pdf/current/2021_UCR_Jan%20-%20March.xlsx) from [New Jersey State Police](https://www.nj.gov/njsp/ucr/current-crime-data1.shtml?agree=0) and compare which county has the highest crime rate per 100K and clearance rate
 
 ## Workflow
