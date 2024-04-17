@@ -187,9 +187,9 @@ attribute_weights = {
 
 In the scatter plot of suitability score vs median household income, the left upper corner is represented as wealthy with a good suitability score. These include MORRIS, BERGEN, and SOMERSET counties. The left lower corner represents low income but with good suitability scores. These include HUDSON, CAMDEN, and ESSEX counties.
 
-In another scatter plot of suitability score vs rank, the left lower corner is represented as a higher rank in the real world reflecting actual residents' opinions. These include HUDSON, MORRIS, BERGEN, MERCER, MIDDLESEX, and SOMERSET counties.
+In another scatter plot of suitability score vs rank, the left lower corner is represented as a higher rank in the real world reflecting actual residents' opinions. These include HUDSON, UNION, MORRIS, BERGEN, MERCER, MIDDLESEX, and SOMERSET counties.
 
-By combining these two results, the overlapping counties are MORRIS and SOMERSET counties.
+By combining these two results, the overlapping counties are MORRIS, BERGEN, SOMERSET, and HUDSON counties.
 
 ## Refleciton
 
