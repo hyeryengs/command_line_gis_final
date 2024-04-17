@@ -35,11 +35,11 @@ BY HYERYENG SHIN
 3. Data Integration
    - combine all the processed data in one data frame for suitability analysis
 4. Redirection
-  - process the data so that all the data can face the same direction; the lower the better, the higher not good
+   - process the data so that all the data can face the same direction; the lower the better, the higher not good
 5. Weighting
-  - give weights to each factor depending on the weights that I think are more important
+   - give weights to each factor depending on the weights that I think are more important
 6. Visualization
-  - visualize the results in various ways like bar chart
+   - visualize the results in various ways like bar chart
 7. Validation
-  - validate the results with different sources such as median household income level, website surveys like [2024 Best Counties to Live in New Jersey](https://www.niche.com/places-to-live/search/best-counties/s/new-jersey/)
+   - validate the results with different sources such as median household income level, website surveys like [2024 Best Counties to Live in New Jersey](https://www.niche.com/places-to-live/search/best-counties/s/new-jersey/)
 
