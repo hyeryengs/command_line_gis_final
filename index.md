@@ -48,6 +48,7 @@ BY HYERYENG SHIN
 1. House price and affordability
    - Simply divide the median house price (median rental price) by the median household income of each county
    - The higher the index, the harder to afford housing price or rental prices (not good)
+   2.1 housing affordability 1.png
 2. Amenities
    - For amenities, I chose to analyze the accessibility of hospitals in case of emergency
    - Calculate the average distance between the centroid of each county and the distance of the top 3 nearest hospitals to the centroid
