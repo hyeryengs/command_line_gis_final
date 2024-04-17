@@ -67,32 +67,64 @@ BY HYERYENG SHIN
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
 ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.4%20school%20quality%202.png)
-   - For the web map, click [here](images/2.4 school quality.html)
+   - For the web map, click [here](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.4%20school%20quality.html)
 
 5. Commute time
    - Simply draw a choropleth map of commute time from the website's statistics
    - Though the commute time might be different depending on where we work, the lower, the better
+  ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.5%20commute%20time.png)
+   
 6. Access to green areas
    - Count the number of parks that are accessible to the public (excluding private parks) by county
    - The higher, the more opportunities to experience different parks and closer accessibility to parks
+  ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.6%20access%20to%20green%20areas.png)
+     
 7. Local environment
    - Count the number of contaminated sites by county
    - The lower, the better
+  ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.7%20local%20environment.png)
+   
 8. Air quality
    - Count the number of air quality permitted facilities by county
    - The lower, the better
+  ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.8%20air%20quality.png)
+   - For the web map, click [here](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/air_quality.html)
+     
 9. Flood risks
     - According to [US Dept of Commerce
 National Oceanic and Atmospheric Administration
 National Weather Service](https://www.weather.gov/ffc/floods#:~:text=Areas%20most%20susceptible%20to%20flash,%2C%20storm%20drains%2C%20and%20culverts.), the flood-prone areas include mountainous streams and rivers, urban areas, low-lying area, storm drains, and culverts. From my data, I'll select the data that are 'Stream/River', 'Sea/Ocean' and have 0 elevation
     - Count the number of flood-prone sites that are either stream/river of sea/ocean and zero-elevation
     - The lower, the better
+  ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.9%20flood%20prone.png)
+      
 10. Crime rates and anti-social behavior
     - Compare the crime rate per 100k and the percentage of cases cleared
     - For the former factor, the lower, the better
     - For the latter one, I think it's better if higher (the ideal would be low cases occurred)
+   ![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.10%20crime%20rate.png)
+      
    
 ## Data Integration
+```
+# Merge all the data in Step 2
+total_merged['COUNTY'] = nj_counties['COUNTY']
+total_merged['housing_affordability'] = housing_and_rental_merged['housing_affordability_ratio']
+total_merged['rental_affordability'] = housing_and_rental_merged['rental_affordability_ratio']
+total_merged['hospital_accessibility'] = nj_counties_njsp['average_distance_to_nearest_hospitals']
+total_merged['rail_accessibility'] = nj_counties_njsp['average_distance_to_nearest_stations']
+total_merged['school_quality'] = nj_counties['schools']
+total_merged['commute_time'] = commute_merged['COMMUTE_TIME']
+total_merged['park_accessibility'] = parks_by_county_merged['park_count']
+total_merged['contaminated_sites'] = contaminated_by_county_merged['value']
+total_merged['air_facilities'] = nj_counties_with_air['num_facilities']
+total_merged['flood_prone'] = nj_counties_with_flood['flood_sites']
+total_merged['crime_per_100k'] = crime_merged['RATE_PER_100K']
+total_merged['case_cleared'] = crime_merged['PERCENT_CLEARED']
+```
+
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/combined%20output%201.png)
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/combined%20output%202.png)
 
 ## Redirection
 Most factors represent better when the indices are lower but for 2 factors - park accessibility and case cleared, they are better when the indices are higher
@@ -126,10 +158,16 @@ attribute_weights = {
 ```
 
 ## Visualization
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/result.png)
 
 ## Validation
 1. Compare the suitability score with the median household income of each county
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/validation%201.png)
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/validation%201%20-1.png)
+
 2. Compare the suitability score with the rank from the website's survey
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/validation%202.png)
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/validation%202%20-1.png)
 
 ## Conclusion
 
