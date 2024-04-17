@@ -66,7 +66,8 @@ BY HYERYENG SHIN
 4. School quality
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
-![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.4%20school%20quality%202.png)  
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.4%20school%20quality%202.png)
+   - For the web map, click [here](images/2.4 school quality.html)
 
 5. Commute time
    - Simply draw a choropleth map of commute time from the website's statistics
