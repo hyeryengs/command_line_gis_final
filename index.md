@@ -1,5 +1,6 @@
 # FINAL PROJECT OF COMMAND LINE GIS
 SPINRG 2024
+
 BY HYERYENG SHIN
 
 ## SYNOPSIS
@@ -8,13 +9,13 @@ BY HYERYENG SHIN
 
 **Topic** Good neighborhood to live
 
-**Research Question** To identify the county offering the most favorable living conditions, I will selectively assess **10 key factors** from [laurushomes website](https://www.laurushomes.co.uk/blog/posts/how-to-decide-where-to-live/)
+**Research Question** To identify the county offering the most favorable living conditions, I will selectively assess **10 key factors** from [laurushomes](https://www.laurushomes.co.uk/blog/posts/how-to-decide-where-to-live/)
 
 **Mapping** I aim to apply suitability analysis techniques learned from my Topics in GIS class using command-line tools. For the static maps, I will generate choropleth maps and components for the suitability analysis, and eventually produce the final suitability analysis map. Furthermore, I intend to integrate this final map with an appropriate base map to create an interactive visualization
 
-## STRATEGIES TO GET CRUCIAL FACTORS FROM [LAURUSHOMES](https://www.laurushomes.co.uk) AND THEIR DATA SOURCES
+## STRATEGIES TO GET CRUCIAL FACTORS AND THEIR DATA SOURCES
 
-1. **House price and affordability**: Calculate Housing price/median household income (or rental price/median household income) from U.S. Census Bureau API and check the county's housing price is appropriate in proportion to income level
+1. **House price and affordability**: Calculate Housing price/median household income (or rental price/median household income) from [U.S. Census Bureau](https://data.census.gov/) API and check the county's housing price is appropriate in proportion to income level
 2. **Amenities**: [Hospital](https://njogis-newjersey.opendata.arcgis.com/datasets/296e4de9d55640ffb9bb766f9606363b_1/explore) accessibility. Compare the average distance between the centroids of the counties and the top 3 nearest hospitals
 3. **Rail accessibility**: Station accessibility ([Rail Stations of NJ Transit](https://njogis-newjersey.opendata.arcgis.com/datasets/NJTRANSIT::rail-stations-of-nj-transit/), [Bus Stops of NJ Transit by Line](https://njogis-newjersey.opendata.arcgis.com/datasets/NJTRANSIT::bus-stops-of-nj-transit-by-line/), [Light Rail Stations of NJ Transit](https://njogis-newjersey.opendata.arcgis.com/datasets/NJTRANSIT::light-rail-stations-of-nj-transit/), [Path Station Locations](https://data.cityofnewyork.us/City-Government/Path-Station-Locations/acxp-7ep7) (NYC Open Data), [Passenger Rail Stations](https://njogis-newjersey.opendata.arcgis.com/datasets/dvrpcgis::passenger-rail-stations/) ). Compare the average distance between the centroids of the counties and the top 3 nearest stations or bus stops
 4. **School quality**: Buffer the dispensary location and spatial join with [school locations](https://njogis-newjersey.opendata.arcgis.com/datasets/6f5ebca854234638953a9342f5b3d620_0/explore) and check which county has more schools exposed to cannabis dispensary within 1 mile
