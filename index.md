@@ -48,6 +48,7 @@ BY HYERYENG SHIN
 **1. House price and affordability**
    - Simply divide the median house price (median rental price) by the median household income of each county
    - The higher the index, the harder to afford housing price or rental prices (not good)
+     
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.1%20housing%20affordability%202.png)
 
 **2. Amenities**
@@ -55,38 +56,45 @@ BY HYERYENG SHIN
    - Calculate the average distance between the centroid of each county and the distance of the top 3 nearest hospitals to the centroid
    - Employed BallTree function for calculation
    - The lower the index, the easier for the residents to access the service
+     
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.2%20amenities%202.png)
 
 **3. Rail accessibility**
    - I chose to analyze the accessibility of all the public transit including bus stops
    - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
    - The lower the index, the easier for the residents to access the service
+     
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.3%20rail%20accessibility%203.png)
 
 **4. School quality**
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
+     
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.4%20school%20quality%202.png)
    - For the web map, click [here](images/2.4%20school%20quality.html)
 
 **5. Commute time**
    - Simply draw a choropleth map of commute time from the website's statistics
    - Though the commute time might be different depending on where we work, the lower, the better
+     
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.5%20commute%20time.png)
    
 **6. Access to green areas**
    - Count the number of parks that are accessible to the public (excluding private parks) by county
    - The higher, the more opportunities to experience different parks and closer accessibility to parks
+     
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.6%20access%20to%20green%20areas.png)
      
 **7. Local environment**
    - Count the number of contaminated sites by county
    - The lower, the better
+     
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.7%20local%20environment.png)
    
 **8. Air quality**
    - Count the number of air quality permitted facilities by county
    - The lower, the better
+     
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.8%20air%20quality.png)
    - For the web map, click [here](images/air_quality.html)
      
@@ -96,12 +104,14 @@ National Oceanic and Atmospheric Administration
 National Weather Service](https://www.weather.gov/ffc/floods#:~:text=Areas%20most%20susceptible%20to%20flash,%2C%20storm%20drains%2C%20and%20culverts.), the flood-prone areas include mountainous streams and rivers, urban areas, low-lying area, storm drains, and culverts. From my data, I'll select the data that are 'Stream/River', 'Sea/Ocean' and have 0 elevation
     - Count the number of flood-prone sites that are either stream/river of sea/ocean and zero-elevation
     - The lower, the better
+    
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.9%20flood%20prone.png)
       
 **10. Crime rates and anti-social behavior**
     - Compare the crime rate per 100k and the percentage of cases cleared
     - For the former factor, the lower, the better
     - For the latter one, I think it's better if higher (the ideal would be low cases occurred)
+       
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.10%20crime%20rate.png)
       
    
@@ -165,11 +175,11 @@ attribute_weights = {
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/result.png)
 
 ## Validation
-1. Compare the suitability score with the median household income of each county
+**1. Compare the suitability score with the median household income of each county**
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%201.png)
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%201%20-1.png)
 
-2. Compare the suitability score with the rank from the website's survey
+**2. Compare the suitability score with the rank from the website's survey**
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%202.png)
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%202%20-1.png)
 
