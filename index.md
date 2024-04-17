@@ -48,23 +48,26 @@ BY HYERYENG SHIN
 1. House price and affordability
    - Simply divide the median house price (median rental price) by the median household income of each county
    - The higher the index, the harder to afford housing price or rental prices (not good)
-   
    ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.1%20housing%20affordability%202.png)
+
 2. Amenities
    - For amenities, I chose to analyze the accessibility of hospitals in case of emergency
    - Calculate the average distance between the centroid of each county and the distance of the top 3 nearest hospitals to the centroid
    - Employed BallTree function for calculation
    - The lower the index, the easier for the residents to access the service
-  ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.2%20amenities.png)
+  ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.2%20amenities%202.png)
+
 3. Rail accessibility
    - I chose to analyze the accessibility of all the public transit including bus stops
    - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
    - The lower the index, the easier for the residents to access the service
-    
-   ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.3%20rail%20accessibility.png)
+   ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.3%20rail%20accessibility%203.png)
+
 4. School quality
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
+![alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.4%20school%20quality%202.png)  
+
 5. Commute time
    - Simply draw a choropleth map of commute time from the website's statistics
    - Though the commute time might be different depending on where we work, the lower, the better
