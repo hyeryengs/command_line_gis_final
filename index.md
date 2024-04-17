@@ -55,6 +55,7 @@ BY HYERYENG SHIN
    - Calculate the average distance between the centroid of each county and the distance of the top 3 nearest hospitals to the centroid
    - Employed BallTree function for calculation
    - The lower the index, the easier for the residents to access the service
+  ![Alt text](https://github.com/hyeryengs/command_line_gis_final/blob/main/images/2.2%20amenities.png)
 3. Rail accessibility
    - I chose to analyze the accessibility of all the public transit including bus stops
    - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
