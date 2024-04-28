@@ -59,6 +59,11 @@ BY HYERYENG SHIN
      
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.2%20amenities%202.png)
 
+   - I retried calculation with weighted centroids of population density by municipalities
+![Alt text](images/2.2 amenities 3.png)
+   - The new results are like this
+![alt text](images/2.2 amenities 4.png)
+
 **3. Rail accessibility**
    - I chose to analyze the accessibility of all the public transit including bus stops
    - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
