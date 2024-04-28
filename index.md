@@ -51,7 +51,7 @@ BY HYERYENG SHIN
      
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.1%20housing%20affordability%202.png)
 
-**2. Amenities**
+**2. Amenities (new)**
    - For amenities, I chose to analyze the accessibility of hospitals in case of emergency
    - Calculate the average distance between the centroid of each county and the distance of the top 3 nearest hospitals to the centroid
    - Employed BallTree function for calculation
@@ -66,12 +66,16 @@ BY HYERYENG SHIN
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.2%20amenities%204.png)
 
 
-**3. Rail accessibility**
+**3. Rail accessibility (new)**
    - I chose to analyze the accessibility of all the public transit including bus stops
    - Similar to the above strategy, calculate the average distance between the centroid of each county and the distance of the top 3 nearest stations/stops to the centroid
    - The lower the index, the easier for the residents to access the service
      
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.3%20rail%20accessibility%203.png)
+
+   - I also applied weighted centroids in calculating the average distance between the weighted centroids and the top 3 nearest public transit stations/stops
+
+![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.3%20rail%20accessibility%204.png)
 
 **4. School quality**
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
