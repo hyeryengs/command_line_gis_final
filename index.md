@@ -125,9 +125,9 @@ National Weather Service](https://www.weather.gov/ffc/floods#:~:text=Areas%20mos
        
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.10%20crime%20rate.png)
 
-   - I multiplied crime rate per 100k by the (1-percentage of cases cleared) so that we might know the uncleared crime cases per 100k
+   - I multiplied the crime rate per 100k by the (1-percentage of cases cleared) so that we might know the uncleared crime cases per 100k
 
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.10%20crime%20rate%02.png)
+![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.10%20crime%20rate%202.png)
       
    
 ## Data Integration
