@@ -77,11 +77,11 @@ BY HYERYENG SHIN
 
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.3%20rail%20accessibility%204.png)
 
-**4. School quality**
+**4. School quality **
    - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
      
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.4%20school%20quality%202.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.4%20school%20quality%203.png)
    - For the web map, click [here](images/2.4%20school%20quality.html)
 
 **5. Commute time**
@@ -118,12 +118,16 @@ National Weather Service](https://www.weather.gov/ffc/floods#:~:text=Areas%20mos
     
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.9%20flood%20prone.png)
       
-**10. Crime rates and anti-social behavior**
+**10. Crime rates and anti-social behavior (new)**
     - Compare the crime rate per 100k and the percentage of cases cleared
     - For the former factor, the lower, the better
     - For the latter one, I think it's better if higher (the ideal would be low cases occurred)
        
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.10%20crime%20rate.png)
+
+   - I multiplied crime rate per 100k by the (1-percentage of cases cleared) so that we might know the uncleared crime cases per 100k
+
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.10%20crime%20rate%02.png)
       
    
 ## Data Integration
