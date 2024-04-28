@@ -77,11 +77,12 @@ BY HYERYENG SHIN
 
 ![Alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.3%20rail%20accessibility%204.png)
 
-**4. School quality **
-   - Using buffer and unary union, I counted the schools that are within the 1-mile boundary of the cannabis dispensary shops
+**4. School quality**
+   - Using buffer and unary union, I counted the schools within the 1-mile boundary of the cannabis dispensary shops. I found that in SALEM and CUMBERLAND, there are no schools that are within the 1-mile boundary of the cannabis dispensary shops.
    - The lower the index, the better for students away from the opportunities to get exposed to cannabis
      
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/2.4%20school%20quality%203.png)
+
    - For the web map, click [here](images/2.4%20school%20quality.html)
 
 **5. Commute time**
@@ -133,36 +134,33 @@ National Weather Service](https://www.weather.gov/ffc/floods#:~:text=Areas%20mos
 ## Data Integration
 Merge the data in one frame
 ```
-# Merge all the data in Step 2
-total_merged['COUNTY'] = nj_counties['COUNTY']
-total_merged['housing_affordability'] = housing_and_rental_merged['housing_affordability_ratio']
-total_merged['rental_affordability'] = housing_and_rental_merged['rental_affordability_ratio']
-total_merged['hospital_accessibility'] = nj_counties_njsp['average_distance_to_nearest_hospitals']
-total_merged['rail_accessibility'] = nj_counties_njsp['average_distance_to_nearest_stations']
-total_merged['school_quality'] = nj_counties['schools']
-total_merged['commute_time'] = commute_merged['COMMUTE_TIME']
-total_merged['park_accessibility'] = parks_by_county_merged['park_count']
-total_merged['contaminated_sites'] = contaminated_by_county_merged['value']
-total_merged['air_facilities'] = nj_counties_with_air['num_facilities']
-total_merged['flood_prone'] = nj_counties_with_flood['flood_sites']
-total_merged['crime_per_100k'] = crime_merged['RATE_PER_100K']
-total_merged['case_cleared'] = crime_merged['PERCENT_CLEARED']
+# Merge all the data
+total_merged['housing_affordability'] = total_merged['COUNTY'].map(lambda x: housing_and_rental_merged.set_index('COUNTY').loc[x, 'housing_affordability_ratio'])
+total_merged['rental_affordability'] = total_merged['COUNTY'].map(lambda x: housing_and_rental_merged.set_index('COUNTY').loc[x, 'rental_affordability_ratio'])
+total_merged['hospital_accessibility'] = total_merged['COUNTY'].map(lambda x: weighted_centroids_county.set_index('COUNTY').loc[x, 'average_distance_to_nearest_hospitals'])
+total_merged['rail_accessibility'] = total_merged['COUNTY'].map(lambda x: weighted_centroids_transit_county.set_index('COUNTY').loc[x, 'average_distance_to_nearest_stations'])
+total_merged['school_quality'] = total_merged['COUNTY'].map(nj_counties.set_index('COUNTY')['schools'])
+total_merged['commute_time'] = total_merged['COUNTY'].map(commute_merged.set_index('COUNTY')['COMMUTE_TIME'])
+total_merged['park_accessibility'] = total_merged['COUNTY'].map(parks_by_county_merged.set_index('COUNTY')['park_count'])
+total_merged['contaminated_sites'] = total_merged['COUNTY'].map(nj_counties.set_index('COUNTY')['value'])
+total_merged['air_facilities'] = total_merged['COUNTY'].map(nj_counties_with_air.set_index('COUNTY')['num_facilities'])
+total_merged['flood_prone'] = total_merged['COUNTY'].map(nj_counties_with_flood.set_index('COUNTY')['flood_sites'])
+total_merged['adj_crime_per_100k'] = total_merged['COUNTY'].map(crime_merged.set_index('COUNTY')['ADJUSTED_RATE_PER_100K'])
 ```
 
 **Bar chart for each factor by county**
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/combined%20output%201.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/combined%20output%203.png)
 
 **Histograms of each factor**
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/combined%20output%202.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/combined%20output%204.png)
 
 ## Redirection
-Most factors represent better when the indices are lower but for 2 factors - park accessibility and case cleared, they are better when the indices are higher
-To change the direction of the index meaning, reverse the direction of park accessibility and case cleared by deducting from the max value of each factor
+Most factors represent better when the indices are lower but for 1 factor - park accessibility, it is better when the indices are higher
+To change the direction of the index meaning, reverse the direction of park accessibility by deducting from the max value of each factor
 
 ```
 # Reverse the direction of park_accessibility and case_cleared
 modified_total_merged['park_accessibility'] = modified_total_merged['park_accessibility'].max() + 1 - modified_total_merged['park_accessibility']
-modified_total_merged['case_cleared'] = modified_total_merged['case_cleared'].max() + 1 - modified_total_merged['case_cleared']
 ```
 
 ## Weighting
@@ -171,7 +169,7 @@ Give different amout of weights to each factor depending on what I think is more
 ```
 # Define attribute weights
 attribute_weights = {
-    'housing_affordability': 0.1,
+    'housing_affordability': 0.15,
     'rental_affordability': 0.05,
     'hospital_accessibility': 0.05,
     'rail_accessibility': 0.05,
@@ -181,30 +179,29 @@ attribute_weights = {
     'contaminated_sites': 0.1,
     'air_facilities': 0.1,
     'flood_prone': 0.05,
-    'crime_per_100k': 0.1,
-    'case_cleared': 0.1
+    'adj_crime_per_100k': 0.15,
 }
 ```
 
 ## Visualization
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/result.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/result%202.png)
 
 ## Validation
 **1. Compare the suitability score with the median household income of each county**
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%201.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%201%20-1.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203%20-1.png)
 
 **2. Compare the suitability score with the rank from the website's survey**
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%202.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%202%20-1.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203.png)
+![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203%20-1.png)
 
 ## Conclusion
 
-In the scatter plot of suitability score vs median household income, the left upper corner is represented as wealthy with a good suitability score. These include MORRIS, BERGEN, and SOMERSET counties. The left lower corner represents low income but with good suitability scores. These include HUDSON, CAMDEN, and ESSEX counties.
+After re-running the model with several revisions, including the utilization of weighted centroids for hospital and rail accessibility, and the incorporation of adjusted crime rates per 100k, as well as correcting the calculation for school quality by changing number of schools to schools within a 1-mile buffer of dispensaries, notable changes in county rankings have emerged.
 
-In another scatter plot of suitability score vs rank, the left lower corner is represented as a higher rank in the real world reflecting actual residents' opinions. These include HUDSON, UNION, MORRIS, BERGEN, MERCER, MIDDLESEX, and SOMERSET counties.
+While HUDSON, BERGEN, and ESSEX counties remained relatively stable, PASSAIC, CAMDEN, CUMBERLAND, BURLINGTON, and OCEAN counties experienced significant increases in their rankings. Conversely, SOMERSET and GLOUCESTER counties saw notable declines. Notably, the introduction of weighted centroids notably reduced average distances. The upper left corner counties with lower scores and higher median household incomes have MORRIS, SOMERSET, BERGEN, MONMOUTH, BURLINGTON, MIDDLESEX, and GLOUCESTER. Conversely, counties in the lower left corner with lower scores and higher ranks, including HUDSON, BURLINGTON, BERGEN, MORRIS, MONMOUTH, MERCER, MIDDLESEX, and SOMERSET, were highlighted in the second scatter plot.
 
-By combining these two results, the overlapping counties are MORRIS, BERGEN, SOMERSET, and HUDSON counties.
+The consistent inclusion of counties like MORRIS, SOMERSET, BERGEN, MONMOUTH, BURLINGTON, and MIDDLESEX are the conclusion of my project. Also, it is inspiring that by continueing to incorporate additional considerations, ideas, and data will enhance reliability and convey meaningful insights.
 
 ## Refleciton
 
