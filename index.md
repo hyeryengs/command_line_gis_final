@@ -189,11 +189,13 @@ attribute_weights = {
 ## Validation
 **1. Compare the suitability score with the median household income of each county**
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203%20-1.png)
+![alt text](images/validation%203%20-%201.png)
+
 
 **2. Compare the suitability score with the rank from the website's survey**
 ![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203.png)
-![alt text](https://raw.githubusercontent.com/hyeryengs/command_line_gis_final/main/images/validation%203%20-1.png)
+![alt text](images/validation%204%20-%201.png)
+
 
 ## Conclusion
 
